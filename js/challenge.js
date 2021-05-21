@@ -8,6 +8,7 @@ const pauseButton = document.getElementById('pause');
 const likesList = document.querySelector('ul.likes');
 const commentsList = document.getElementById('list');
 const commentForm = document.querySelector('form#comment-form');
+const input = document.querySelector('input#comment-input')
 
 // Function for counter to increment once per second
 let timer = setInterval(increment, 1000);
@@ -17,6 +18,13 @@ minusButton.addEventListener('click', decrement);
 plusButton.addEventListener('click', increment);
 likeButton.addEventListener('click', like);
 pauseButton.addEventListener('click', pause);
+commentForm.addEventListener('submit', function(event) {
+    const newComment = document.createElement('p');
+    newComment.textContent = input.value;
+    commentsList.appendChild(newComment);
+    input.value = '';
+    event.preventDefault();
+});
 
 // Decrement function
 function decrement() {
