@@ -40,15 +40,35 @@ function increment() {
 
 // Like function
 function like() {
-    const numberLiked = counter;
+    let likedNumber = counter;
+
+    // Create unique id for each counter number liked
+    let id = 'number' + likedNumber;
+
+    // Create new li element for a new liked counter number
     const newLike = document.createElement('li');
-    newLike.textContent = `${numberLiked} has been liked [???] time`;
-    likesList.appendChild(newLike);
+    newLike.id = id;
+
+    // Grab existing li element for an already-liked counter number
+    let likeExists = document.querySelector(`#${id}`);
+
+    // Checks to see if a number has already been liked
+    // If yes, increase total like count
+    // If not, keep total like count at 1 and append the new li element as a child of the ul element
+    if (likeExists) {
+        let likeCount = document.querySelector(`#${id} span`).innerHTML;
+        likeCount++;
+        likeExists.innerHTML = `${likedNumber} has been liked <span>${likeCount}</span> times!`
+    } else {
+        newLike.innerHTML = `${likedNumber} has been liked <span>1</span> time!`;
+        likesList.appendChild(newLike);
+    }
 }
 
 // Pause function
 function pause() {
     // Pauses/resumes timer depending on the text displayed in the pause button
+    // Buttons also enabled/disabled depending on timer state
     if (pauseButton.textContent === ' pause ') {
         minusButton.disabled = true;
         plusButton.disabled = true;
