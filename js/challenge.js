@@ -90,5 +90,6 @@ function pause() {
 function reset() {
     counter = 0;
     likesList.innerHTML = '';
+    commentsList.innerHTML = '';
     return counterContainer.textContent = counter;
 }
