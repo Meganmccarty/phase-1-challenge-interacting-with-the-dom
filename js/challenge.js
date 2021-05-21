@@ -5,6 +5,7 @@ const minusButton = document.getElementById('minus');
 const plusButton = document.getElementById('plus');
 const likeButton = document.getElementById('heart');
 const pauseButton = document.getElementById('pause');
+const resetButton = document.getElementById('reset');
 const likesList = document.querySelector('ul.likes');
 const commentsList = document.getElementById('list');
 const commentForm = document.querySelector('form#comment-form');
@@ -18,6 +19,7 @@ minusButton.addEventListener('click', decrement);
 plusButton.addEventListener('click', increment);
 likeButton.addEventListener('click', like);
 pauseButton.addEventListener('click', pause);
+resetButton.addEventListener('click', reset);
 commentForm.addEventListener('submit', function(event) {
     const newComment = document.createElement('p');
     newComment.textContent = input.value;
@@ -82,4 +84,11 @@ function pause() {
         pauseButton.textContent = ' pause ';
         timer = setInterval(increment, 1000);
     }
+}
+
+// Reset function
+function reset() {
+    counter = 0;
+    likesList.innerHTML = '';
+    return counterContainer.textContent = counter;
 }
