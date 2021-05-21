@@ -15,6 +15,7 @@ let timer = setInterval(increment, 1000);
 // Event listeners for minus, plus, and pause buttons
 minusButton.addEventListener('click', decrement);
 plusButton.addEventListener('click', increment);
+likeButton.addEventListener('click', like);
 pauseButton.addEventListener('click', pause);
 
 // Decrement function
@@ -27,6 +28,14 @@ function decrement() {
 function increment() {
     counter += 1;
     return counterContainer.textContent = counter
+}
+
+// Like function
+function like() {
+    const numberLiked = counter;
+    const newLike = document.createElement('li');
+    newLike.textContent = `${numberLiked} has been liked [???] time`;
+    likesList.appendChild(newLike);
 }
 
 // Pause function
