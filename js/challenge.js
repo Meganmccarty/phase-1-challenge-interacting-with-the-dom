@@ -31,12 +31,17 @@ function increment() {
 
 // Pause function
 function pause() {
-
     // Pauses/resumes timer depending on the text displayed in the pause button
     if (pauseButton.textContent === ' pause ') {
+        minusButton.disabled = true;
+        plusButton.disabled = true;
+        likeButton.disabled = true;
         pauseButton.textContent = ' resume ';
         clearInterval(timer);
     } else if (pauseButton.textContent === ' resume ') {
+        minusButton.disabled = false;
+        plusButton.disabled = false;
+        likeButton.disabled = false;
         pauseButton.textContent = ' pause ';
         timer = setInterval(increment, 1000);
     }
